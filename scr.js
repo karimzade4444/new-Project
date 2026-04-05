@@ -10,9 +10,6 @@ let search = document.querySelector(".search")
 let select1 = document.querySelector(".sel1")
 let add = document.querySelector(".add")
 let footer = document.querySelector(".footer")
-let block = document.querySelector(".block")
-let topblock = document.querySelector(".topBlock")
-let middleblock = document.querySelector(".middleBlock")
 let bottomblock = document.querySelector(".bottomBlock")
 
 function render(users){
@@ -24,6 +21,7 @@ users.forEach(element => {
     let topblock = document.createElement("div")
     topblock.classList.add(".topblock")
     let h3 = document.createElement("h3")
+    h3.textContent = element.name
     topblock.append(h3)
     let blockedit = document.createElement("div")
     blockedit.classList.add(".blockedit")
@@ -34,6 +32,20 @@ users.forEach(element => {
     p2.textContent ="✍️"
     let p3= document.createElement("p")
     p3.textContent ="🗑️"
+    blockedit.append(p1,p2,p3)
+    let middleblock = document.createElement("div")
+    middleblock.classList.add(".middleblock")
+    let descr = document.createElement("p")
+    descr.textContent = element.description;
+    middleblock.append(descr)
+    let bottomblock = document.createElement("div")
+    bottomblock.classList.add(".bottomblock")
+    let category = document.createElement("p")
+    let divday = document.createElement("div")
+    let today = new Date()
+    divday.textContent = today.toLocaleDateString()
+    bottomblock.append(category,divday)
+    block.append(topblock,middleblock,bottomblock)
 });
 
 

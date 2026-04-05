@@ -70,13 +70,13 @@ line-height: 1.6;
     border-radius: 20px;
     border: 2px solid black;
 }
-.topBlock{
+.topblock{
     display: flex;
     justify-content: space-between;
     padding: 20px 20px;
     align-items: start;
 }
-.topBlock h3{
+.topblock h3{
     font-size: 20px;
     color: rgb(53, 53, 116);
     letter-spacing: 1px;
@@ -90,13 +90,13 @@ line-height: 1.6;
     gap: 20px;
 }
 
-.middleBlock{
+.middleblock{
     padding: 30px 20px;
     color: rgb(88, 87, 87);
     font-size: 14px;
 }
 
-.bottomBlock{
+.bottomblock{
     display: flex;
     padding: 40px 40px;
     justify-content: space-between;
