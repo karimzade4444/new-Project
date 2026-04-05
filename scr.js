@@ -40,8 +40,8 @@ users.forEach(element => {
     bottomblock.classList.add("bottomblock")
     let category = document.createElement("p")
     let divday = document.createElement("div")
-    let today = new Date()
-    divday.textContent = today.toLocaleDateString()
+    let today = new Date().toLocaleDateString()
+    divday.textContent = today
     bottomblock.append(category,divday)
     block.append(topblock,middleblock,bottomblock)
 });
