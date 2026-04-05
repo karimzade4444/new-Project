@@ -57,7 +57,16 @@ users.forEach(element => {
     editmodal.onclick=()=>{
         viewcreatmodal.style.display="block"
         viewmodal.style.display="none"
+        close.onclick=()=>{
+            viewcreatmodal.style.display="none"
+        }
     }
+    }
+      p2.onclick=()=>{
+        viewcreatmodal.style.display="block"
+        close.onclick=()=>{
+            viewcreatmodal.style.display="none"
+        }
     }
 });
 
