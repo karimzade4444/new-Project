@@ -11,6 +11,9 @@ let add = document.querySelector(".add")
 let footer = document.querySelector(".footer")
 let viewmodal = document.querySelector(".viewmodal")
 let cancel = document.querySelector(".Cancel")
+let close = document.querySelector(".Close")
+let viewcreatmodal = document.querySelector(".viewcreatmodal")
+let editmodal = document.querySelector(".editmodal")
 
 function render(users){
 footer.innerHTML=""
@@ -49,6 +52,10 @@ users.forEach(element => {
     p1.onclick=()=>{
     viewmodal.style.display="block"
     cancel.onclick=()=>{
+        viewmodal.style.display="none"
+    }
+    editmodal.onclick=()=>{
+        viewcreatmodal.style.display="block"
         viewmodal.style.display="none"
     }
     }
