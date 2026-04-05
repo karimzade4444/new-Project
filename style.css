@@ -95,6 +95,9 @@ body {
   align-items: center;
   gap: 20px;
 }
+.blockedit p{
+    cursor: pointer;
+}
 
 .middleblock {
   padding: 30px 20px;

@@ -9,6 +9,8 @@ let search = document.querySelector(".search")
 let select1 = document.querySelector(".sel1")
 let add = document.querySelector(".add")
 let footer = document.querySelector(".footer")
+let viewmodal = document.querySelector(".viewmodal")
+let cancel = document.querySelector(".Cancel")
 
 function render(users){
 footer.innerHTML=""
@@ -44,6 +46,12 @@ users.forEach(element => {
     divday.textContent = today
     bottomblock.append(category,divday)
     block.append(topblock,middleblock,bottomblock)
+    p1.onclick=()=>{
+    viewmodal.style.display="block"
+    cancel.onclick=()=>{
+        viewmodal.style.display="none"
+    }
+    }
 });
 
 
