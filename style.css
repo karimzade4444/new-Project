@@ -61,6 +61,11 @@ line-height: 1.6;
     width: 90%;
     margin: auto;
     margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
 .block{
@@ -75,6 +80,7 @@ line-height: 1.6;
     justify-content: space-between;
     padding: 20px 20px;
     align-items: start;
+    height: 40px;
 }
 .topblock h3{
     font-size: 20px;
@@ -94,6 +100,7 @@ line-height: 1.6;
     padding: 30px 20px;
     color: rgb(88, 87, 87);
     font-size: 14px;
+    height: 40px;
 }
 
 .bottomblock{
