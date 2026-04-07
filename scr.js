@@ -213,3 +213,13 @@ search.oninput = () => {
   );
   render(filtered);
 };
+
+select1.onchange = () => {
+  let selectedCategory = select1.value;
+  let filtereds = updatedData.filter((el) =>
+    selectedCategory === "Все категории"
+      ? true
+      : el.category === selectedCategory,
+  );
+  render(filtereds);
+};
