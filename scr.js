@@ -55,6 +55,9 @@ users.forEach(element => {
     divday.textContent = today
     bottomblock.append(category,divday)
     block.append(topblock,middleblock,bottomblock)
+    add.onclick = ()=>{
+      
+    }
     p1.onclick=()=>{
     viewmodal.style.display="block"
     Vname.textContent = element.name
