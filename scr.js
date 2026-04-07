@@ -57,12 +57,7 @@ users.forEach(element => {
     divday.textContent = today
     bottomblock.append(category,divday)
     block.append(topblock,middleblock,bottomblock)
-    add.onclick = ()=>{
-      creatmodal.style.display="block"
-      Closeml.onclick=()=>{
-       creatmodal.style.display="none" 
-      }
-    }
+  
     p1.onclick=()=>{
     viewmodal.style.display="block"
     Vname.textContent = element.name
@@ -101,13 +96,24 @@ users.forEach(element => {
 
 }
 
+  add.onclick = ()=>{
+      creatmodal.style.display="block"
+      Closeml.onclick=()=>{
+       creatmodal.style.display="none" 
+      }
+    }
+
+
+
+
 async function getData() {
   try {
     let response = await fetch(api);
     let data = await response.json();
     let updatedData = data.map(item => ({
-      ...item,
-      category: "default"}))
+  ...item,
+  category: item.category || "default"
+}))
       console.log(updatedData)
    render(updatedData)
   } catch (error) {
@@ -144,8 +150,53 @@ async function updateUser(id, data) {
 }
 
 
-updateForm.onsubmit = () => {
+updateForm.onsubmit = (event) => {
   event.preventDefault();
-  updateUser(updateForm.id.value, Object.fromEntries(new FormData(updateForm)));
-  viewcreatmodal.style.display="none"
+
+  let formData = Object.fromEntries(new FormData(updateForm));
+
+  let fixedData = {
+    name: formData.nameinp,
+    description: formData.des,
+    category: formData.status,
+    id: formData.id
+  };
+
+  updateUser(formData.id, fixedData);
+
+  viewcreatmodal.style.display = "none";
+};
+
+
+async function createUser(data) {
+  try {
+    await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    getData();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+updateForm.onsubmit = (event) => {
+  event.preventDefault();
+
+  let formData = Object.fromEntries(new FormData(updateForm));
+
+  let fixedData = {
+    name: formData.nameinp,
+    description: formData.des,
+    category: formData.status,
+    id: formData.id
+  };
+
+  updateUser(formData.id, fixedData);
+
+  viewcreatmodal.style.display = "none";
 };
