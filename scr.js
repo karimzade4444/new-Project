@@ -13,6 +13,7 @@ let cancel = document.querySelector(".Cancel")
 let close = document.querySelector(".Close")
 let viewcreatmodal = document.querySelector(".viewcreatmodal")
 let editmodal = document.querySelector(".editmodal")
+let Vname = document.querySelector(".Vname")
 
 function render(users){
 footer.innerHTML=""
@@ -50,6 +51,7 @@ users.forEach(element => {
     block.append(topblock,middleblock,bottomblock)
     p1.onclick=()=>{
     viewmodal.style.display="block"
+    Vname.textContent = element.name
     cancel.onclick=()=>{
         viewmodal.style.display="none"
     }
