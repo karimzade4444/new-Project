@@ -60,6 +60,7 @@ users.forEach(element => {
     Vname.textContent = element.name
     Vdes.textContent = element.description
     viewcategory.textContent = element.category
+    vday.textContent = today
     cancel.onclick=()=>{
         viewmodal.style.display="none"
     }
