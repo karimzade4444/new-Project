@@ -17,6 +17,7 @@ let Vname = document.querySelector(".Vname")
 let Vdes = document.querySelector(".Vdes")
 let updateForm = document.querySelector(".updateForm")
 let viewcategory = document.querySelector(".viewcategory")
+let vday = document.querySelector(".vday")
 
 
 function render(users){
