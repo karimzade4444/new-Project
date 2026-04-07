@@ -21,6 +21,9 @@ let vday = document.querySelector(".vday")
 let creatmodal = document.querySelector(".creatmodal")
 let Closeml = document.querySelector(".Closeml")
 let id = document.querySelector(".id")
+let CreatForm = document.querySelector(".CreatForm")
+
+
 
 function render(users){
 footer.innerHTML=""
@@ -184,19 +187,18 @@ async function createUser(data) {
 }
 
 
-updateForm.onsubmit = (event) => {
+CreatForm.onsubmit = (event) => {
   event.preventDefault();
 
-  let formData = Object.fromEntries(new FormData(updateForm));
+  let formcrData = Object.fromEntries(new FormData(CreatForm));
 
-  let fixedData = {
-    name: formData.nameinp,
-    description: formData.des,
-    category: formData.status,
-    id: formData.id
+  let fixedcrData = {
+    name: formcrData.nameinp,
+    description: formcrData.des,
+    category: formcrData.status
   };
 
-  updateUser(formData.id, fixedData);
+  createUser(fixedcrData);
 
-  viewcreatmodal.style.display = "none";
+  creatmodal.style.display = "none";
 };
