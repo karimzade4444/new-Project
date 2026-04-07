@@ -2,7 +2,6 @@
 let api = "https://69d2798a5043d95be971eb73.mockapi.io/api/data"
 
 
-
 let container = document.querySelector(".container")
 let middle = document.querySelector(".middle")
 let search = document.querySelector(".search")
@@ -77,9 +76,19 @@ async function getData() {
   try {
     let response = await fetch(api);
     let data = await response.json();
-   render(data)
+    let updatedData = data.map(item => ({
+      ...item,
+      category: "default"}))
+      console.log(updatedData)
+   render(updatedData)
   } catch (error) {
     console.log(error);
   }
 }
 getData();
+
+
+search.on = () => {
+  let searchBlock = data.filter((el) => el.name.includes(search.value));
+  return searchBlock ? render(searchBlock) : render(data);
+};
