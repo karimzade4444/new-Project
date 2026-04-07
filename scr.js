@@ -68,7 +68,7 @@ users.forEach(element => {
     Vname.textContent = element.name
     Vdes.textContent = element.description
     viewcategory.textContent = element.category
-    id.textContent = element.id
+    updateForm.id.value = element.id
     vday.textContent = today
     cancel.onclick=()=>{
         viewmodal.style.display="none"
@@ -88,7 +88,7 @@ users.forEach(element => {
         updateForm.nameinp.value=element.name
         updateForm.des.value=element.description
         updateForm.status.value = element.category
-         id.textContent = element.id
+         updateForm.id.value = element.id
         close.onclick=()=>{
             viewcreatmodal.style.display="none"
         }
@@ -128,14 +128,14 @@ async function deleteUser(id) {
 }
 
 
-async function updateUser(id, updatedData) {
+async function updateUser(id, data) {
   try {
     await fetch(`${api}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify(data),
     });
     getData();
   } catch (error) {
