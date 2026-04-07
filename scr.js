@@ -22,7 +22,7 @@ let creatmodal = document.querySelector(".creatmodal")
 let Closeml = document.querySelector(".Closeml")
 let id = document.querySelector(".id")
 let CreatForm = document.querySelector(".CreatForm")
-
+let status = document.querySelector(".status")
 
 
 function render(users){
@@ -46,6 +46,7 @@ users.forEach(element => {
     let p3= document.createElement("p")
     p3.textContent ="🗑️"
     blockedit.append(p1,p2,p3)
+    status.style.color = element.category == "Работа"?"blue":element.category =="Личное"?"green":"purple"
     let middleblock = document.createElement("div")
     middleblock.classList.add("middleblock")
     let descr = document.createElement("p")
@@ -115,7 +116,7 @@ async function getData() {
     let data = await response.json();
     let updatedData = data.map(item => ({
   ...item,
-  category: item.category || "default"
+  status: item.status || "default"
 }))
       console.log(updatedData)
    render(updatedData)
@@ -161,7 +162,7 @@ updateForm.onsubmit = (event) => {
   let fixedData = {
     name: formData.nameinp,
     description: formData.des,
-    category: formData.status,
+    status: formData.status,
     id: formData.id
   };
 
@@ -195,7 +196,7 @@ CreatForm.onsubmit = (event) => {
   let fixedcrData = {
     name: formcrData.nameinp,
     description: formcrData.des,
-    category: formcrData.status
+    status: formcrData.status
   };
 
   createUser(fixedcrData);
