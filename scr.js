@@ -16,6 +16,7 @@ let editmodal = document.querySelector(".editmodal")
 let Vname = document.querySelector(".Vname")
 let Vdes = document.querySelector(".Vdes")
 let updateForm = document.querySelector(".updateForm")
+let viewcategory = document.querySelector(".viewcategory")
 
 
 function render(users){
@@ -47,6 +48,7 @@ users.forEach(element => {
     let bottomblock = document.createElement("div")
     bottomblock.classList.add("bottomblock")
     let category = document.createElement("p")
+    category.textContent = element.category
     let divday = document.createElement("div")
     let today = new Date().toLocaleDateString()
     divday.textContent = today
@@ -56,6 +58,7 @@ users.forEach(element => {
     viewmodal.style.display="block"
     Vname.textContent = element.name
     Vdes.textContent = element.description
+    viewcategory.textContent = element.category
     cancel.onclick=()=>{
         viewmodal.style.display="none"
     }
