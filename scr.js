@@ -72,7 +72,13 @@ function render(users) {
       viewcategory.textContent = element.category;
       updateForm.id.value = element.id;
       vday.textContent = divday.textContent;
-      
+      viewcategory.style.color =
+        element.category === "Работа"
+          ? "blue"
+          : element.category === "Личное"
+            ? "green"
+            : "purple";
+
       cancel.onclick = () => {
         viewmodal.style.display = "none";
       };
@@ -109,12 +115,12 @@ add.onclick = () => {
     creatmodal.style.display = "none";
   };
 };
-
+let updatedData = [];
 async function getData() {
   try {
     let response = await fetch(api);
     let data = await response.json();
-    let updatedData = data.map((item) => ({
+    updatedData = data.map((item) => ({
       ...item,
       category: item.category || "default",
     }));
@@ -198,4 +204,12 @@ CreatForm.onsubmit = (event) => {
   createUser(fixedcrData);
 
   creatmodal.style.display = "none";
+};
+
+search.oninput = () => {
+  let query = search.value.toLowerCase();
+  let filtered = updatedData.filter((el) =>
+    el.name.toLowerCase().includes(query),
+  );
+  render(filtered);
 };
