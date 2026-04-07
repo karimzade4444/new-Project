@@ -71,8 +71,9 @@ users.forEach(element => {
     }
       p2.onclick=()=>{
         viewcreatmodal.style.display="block"
-        updateForm.nameinp=element.name
-        updateForm.des=element.description
+        updateForm.nameinp.value=element.name
+        updateForm.des.value=element.description
+        updateForm.status.value = element.category
         close.onclick=()=>{
             viewcreatmodal.style.display="none"
         }
