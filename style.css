@@ -319,3 +319,14 @@ body {
   font-size: 18px;
   cursor: pointer;
 }
+
+.Closeml {
+  width: 150px;
+  height: 40px;
+  border-radius: 15px;
+  background-color: white;
+  border: 0px;
+  color: rgb(163, 163, 252);
+  font-size: 18px;
+  cursor: pointer;
+}

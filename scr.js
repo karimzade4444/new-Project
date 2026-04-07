@@ -18,7 +18,9 @@ let Vdes = document.querySelector(".Vdes")
 let updateForm = document.querySelector(".updateForm")
 let viewcategory = document.querySelector(".viewcategory")
 let vday = document.querySelector(".vday")
-
+let creatmodal = document.querySelector(".creatmodal")
+let Closeml = document.querySelector(".Closeml")
+let id = document.querySelector(".id")
 
 function render(users){
 footer.innerHTML=""
@@ -56,13 +58,17 @@ users.forEach(element => {
     bottomblock.append(category,divday)
     block.append(topblock,middleblock,bottomblock)
     add.onclick = ()=>{
-      
+      creatmodal.style.display="block"
+      Closeml.onclick=()=>{
+       creatmodal.style.display="none" 
+      }
     }
     p1.onclick=()=>{
     viewmodal.style.display="block"
     Vname.textContent = element.name
     Vdes.textContent = element.description
     viewcategory.textContent = element.category
+    id.textContent = element.id
     vday.textContent = today
     cancel.onclick=()=>{
         viewmodal.style.display="none"
@@ -82,9 +88,13 @@ users.forEach(element => {
         updateForm.nameinp.value=element.name
         updateForm.des.value=element.description
         updateForm.status.value = element.category
+         id.textContent = element.id
         close.onclick=()=>{
             viewcreatmodal.style.display="none"
         }
+    }
+    p3.onclick=()=>{
+      deleteUser(element.id)
     }
 });
 
@@ -106,8 +116,36 @@ async function getData() {
 }
 getData();
 
+async function deleteUser(id) {
+  try {
+    await fetch(`${api}/${id}`, {
+      method: "DELETE",
+    });
+    getData();
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-search.on = () => {
-  let searchBlock = data.filter((el) => el.name.includes(search.value));
-  return searchBlock ? render(searchBlock) : render(data);
+
+async function updateUser(id, updatedData) {
+  try {
+    await fetch(`${api}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+    getData();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+updateForm.onsubmit = () => {
+  event.preventDefault();
+  updateUser(updateForm.id.value, Object.fromEntries(new FormData(updateForm)));
+  viewcreatmodal.style.display="none"
 };
