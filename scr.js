@@ -14,6 +14,9 @@ let close = document.querySelector(".Close")
 let viewcreatmodal = document.querySelector(".viewcreatmodal")
 let editmodal = document.querySelector(".editmodal")
 let Vname = document.querySelector(".Vname")
+let Vdes = document.querySelector(".Vdes")
+let updateForm = document.querySelector(".updateForm")
+
 
 function render(users){
 footer.innerHTML=""
@@ -52,12 +55,15 @@ users.forEach(element => {
     p1.onclick=()=>{
     viewmodal.style.display="block"
     Vname.textContent = element.name
+    Vdes.textContent = element.description
     cancel.onclick=()=>{
         viewmodal.style.display="none"
     }
     editmodal.onclick=()=>{
         viewcreatmodal.style.display="block"
         viewmodal.style.display="none"
+
+        
         close.onclick=()=>{
             viewcreatmodal.style.display="none"
         }
@@ -65,6 +71,8 @@ users.forEach(element => {
     }
       p2.onclick=()=>{
         viewcreatmodal.style.display="block"
+        updateForm.nameinp=element.name
+        updateForm.des=element.description
         close.onclick=()=>{
             viewcreatmodal.style.display="none"
         }
